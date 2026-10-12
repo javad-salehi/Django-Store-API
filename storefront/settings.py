@@ -90,13 +90,15 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'storefront2',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': 'Javad@3396'
+        'NAME': config('DB_NAME'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'PORT': config('DB_PORT', default=3306, cast=int),
     }
 }
 
